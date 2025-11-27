@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Japan–Canada Room Mediator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      /* ---------- Base styles ---------- */
+      :root {
+        --bg: #fdfcfb;
+        --bg-alt: #ffffff;
+        --text-main: #1f2933;
+        --text-muted: #6b7280;
+        --accent: #f97373;
+        --accent-soft: #ffe4e6;
+        --accent-blue: #60a5fa;
+        --accent-lime: #a3e635;
+        --border-soft: #e5e7eb;
+        --radius-xl: 24px;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.09);
+        --container-width: 1100px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(
+          circle at top left,
+          #ffeff1 0,
+          #fdfcfb 40%,
+          #f4f7fb 100%
+        );
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      /* ---------- Header ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: rgba(253, 252, 251, 0.88);
+        border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        gap: 12px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        background: conic-gradient(
+          from 180deg,
+          #f97373,
+          #facc15,
+          #22c55e,
+          #3b82f6,
+          #f97373
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-name {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 0.03em;
+      }
+
+      .brand-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 14px;
+      }
+
+      .nav-link {
+        padding: 6px 10px;
+        border-radius: 999px;
+        transition: background 0.18s ease, transform 0.18s ease;
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      .nav-link:hover {
+        background: rgba(148, 163, 184, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .nav-link--primary {
+        border-radius: 999px;
+        padding: 8px 14px;
+        background: var(--text-main);
+        color: white;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+      }
+
+      .nav-link--primary:hover {
+        transform: translateY(-1px);
+        background: #111827;
+      }
+
+      /* ---------- Hero (full top page) ---------- */
+/* This makes the whole top area one screen tall */
+/* FULL SCREEN HERO WRAPPER */
+/* The entire top hero is GREEN and full screen */
+.hero-screen {
+  height: 100vh;               /* full screen */
+  width: 100%;
+  background: #0c5a41;         /* green background */
+  display: flex;
+  align-items: center;         /* vertical centering */
+  justify-content: center;     /* horizontal centering */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* This becomes just the content, not a box */
+.hero {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;             /* small side padding */
+}
+
+.hero-inner {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-topline {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-size: 80px;            /* very big but compact */
+  line-height: 1.0;           /* tight spacing like Phamily */
+  font-weight: 900;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto 18px auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.hero-btn {
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.hero-btn.primary {
+  background: #ffaad5;      /* soft pink */
+  color: #5a0030;
+}
+
+.hero-btn.primary:hover {
+  background: #ff95ca;
+}
+
+.hero-btn.ghost {
+  background: #fff;
+  color: #333;
+}
+
+.hero-btn.ghost:hover {
+  background: #f3f3f3;
+}
+
+/* Optional fun hands (like Phamily) */
+.hero-left,
+.hero-right {
+  position: absolute;
+  bottom: -10px;
+  width: 160px;
+  opacity: 0.95;
+}
+
+.hero-left {
+  left: -10px;
+}
+
+.hero-right {
+  right: -10px;
+}
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease,
+          background 0.15s ease, border-color 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: #111827;
+        color: #ffffff;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+        font-weight: 500;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        background: #020617;
+      }
+
+      .btn-outline {
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--text-main);
+        border-color: rgba(156, 163, 175, 0.8);
+      }
+
+      .btn-outline:hover {
+        background: #f9fafb;
+        transform: translateY(-1px);
+      }
+
+      .hero-note {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .hero-image {
+        flex: 1;
+        display: flex;
+        align-items: stretch;
+      }
+
+      .hero-card {
+        background: linear-gradient(145deg, #ffffff, #fef2f2);
+        border-radius: 32px;
+        padding: 20px 20px 18px;
+        box-shadow: var(--shadow-soft);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border: 1px solid rgba(248, 250, 252, 0.8);
+      }
+
+      .hero-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero-tag {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #be123c;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-location {
+        font-size: 12px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .hero-location-badge {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: conic-gradient(from 120deg, #22c55e, #3b82f6, #22c55e);
+      }
+
+      .hero-card-title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .hero-list {
+        list-style: none;
+        font-size: 13px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .hero-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        color: var(--text-muted);
+      }
+
+      .hero-dot {
+        margin-top: 4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--accent-blue);
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 6px;
+      }
+
+      .hero-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.14);
+        color: #4b5563;
+      }
+
+      /* ---------- Section layout ---------- */
+      .section {
+        padding: 32px 0;
+      }
+
+      .section + .section {
+        border-top: 1px solid rgba(229, 231, 235, 0.7);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .section-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 11px;
+        color: #9ca3af;
+        font-weight: 600;
+      }
+
+      .section-title {
+        font-size: 22px;
+        margin-top: 6px;
+        letter-spacing: -0.02em;
+      }
+
+      .section-title strong {
+        color: var(--accent-blue);
+      }
+
+      .section-sub {
+        margin-top: 6px;
+        font-size: 13px;
+        color: var(--text-muted);
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ---------- Mission cards ---------- */
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .card-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--radius-xl);
+        padding: 16px 16px 16px 16px;
+        box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        align-items: center;
+      }
+
+      .card-visual {
+        width: 44px;
+        height: 44px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .card-visual--pink {
+        background: radial-gradient(circle at top left, #fecaca, #f97373);
+        color: #fff;
+      }
+
+      .card-visual--blue {
+        background: radial-gradient(circle at top left, #bfdbfe, #60a5fa);
+        color: #0f172a;
+      }
+
+      .card-visual--lime {
+        background: radial-gradient(circle at top left, #d9f99d, #a3e635);
+        color: #111827;
+      }
+
+      .card-content h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .card-content p {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      @media (min-width: 720px) {
+        .card-row {
+          grid-template-columns: auto minmax(0, 1fr);
+          padding: 18px 24px;
+        }
+        .card-row--reverse {
+          grid-template-columns: minmax(0, 1fr) auto;
+        }
+        .card-row--reverse .card-visual {
+          justify-self: end;
+        }
+      }
+
+      /* ---------- Role switcher ---------- */
+      .role-switch {
+        margin: 18px auto 24px;
+        max-width: 420px;
+        background: rgba(15, 23, 42, 0.03);
+        border-radius: 999px;
+        padding: 4px;
+        display: flex;
+        gap: 4px;
+      }
+
+      .role-tab {
+        flex: 1;
+        text-align: center;
+        padding: 8px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: #6b7280;
+        font-weight: 500;
+        transition: background 0.18s ease, color 0.18s ease,
+          box-shadow 0.18s ease, transform 0.18s ease;
+      }
+
+      .role-tab.active {
+        background: #ffffff;
+        color: #111827;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+        transform: translateY(-1px);
+      }
+
+      .role-view {
+        display: none;
+        animation: fadeIn 0.22s ease-out;
+      }
+
+      .role-view.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ---------- Contact section ---------- */
+      .contact-card {
+        max-width: 640px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        padding: 20px 18px 18px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        font-size: 14px;
+      }
+
+      .contact-card p {
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .contact-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #9ca3af;
+        margin-bottom: 4px;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+        align-items: center;
+      }
+
+      .pill {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.05);
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 12px;
+        background: #f3f4f6;
+        padding: 3px 6px;
+        border-radius: 6px;
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        padding: 18px 0 26px;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+<section class="hero-screen">
+  <div class="hero">
+  
+    <div class="hero-inner">
+    
+    <div class="hero-content">
+      <h2 class="hero-topline">Safe Housing Support in Vancouver</h2>
+      <h2 class="hero-topline">安心できる部屋探し</h2>
+
+      <h1 class="hero-title">
+        Vancouver Housing Bridge<br>
+      </h1>
+
+      <p class="hero-desc">
+        Connecting Japanese newcomers and Vancouver house owners with
+        clear communication, translation, and pre-screening support.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/japanese" class="hero-btn primary">I’m Japanese</a>
+        <a href="/owners" class="hero-btn ghost">I’m an Owner</a>
+      </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- optional illustrations -->
+    <img src="hand-left.png" class="hero-left" alt="">
+    <img src="hand-right.png" class="hero-right" alt="">
+
+  </div>
+</section>
+
+      <!-- ========== MISSION (APPEARS ON SCROLL) ========== -->
+      <section class="section" id="mission">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow">Our Mission</p>
+            <h2 class="section-title">
+              Peace of mind for<br /><strong>both sides</strong>
+            </h2>
+            <p class="section-sub">
+              I support Japanese room seekers and local house owners so that
+              both can enjoy a safe, respectful, and low-stress living
+              arrangement.
+            </p>
+          </div>
+
+          <div class="cards">
+            <!-- Card 1 -->
+            <article class="card-row">
+              <div class="card-visual card-visual--pink">😊</div>
+              <div class="card-content">
+                <h3>Support for Japanese newcomers</h3>
+                <h3>日本人向けサポート</h3>
+                <p>
+                  For those not confident in English, I help with communication,
+                  message writing, contract understanding, and problem-solving
+                  without fear or confusion.
+                </p>
+                <p>
+                  オーナーへの交渉や契約内容の確認、トラブル対応など、全て日本語で対応します。
+                  誤解や不安なく、安心して部屋探しができます。
+                </p>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card-row card-row--reverse">
+              <div class="card-visual card-visual--blue">🏡</div>
+              <div class="card-content">
+                <h3>Reliable tenants for owners</h3>
+                <p>
+                  Japanese tenants are known for being polite, quiet, and clean.
+                  I screen applicants and confirm their identity, purpose,
+                  budget, and lifestyle before connecting them to owners.
+                </p>
+              
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card-row">
+              <div class="card-visual card-visual--lime">🤝</div>
+              <div class="card-content">
+                <h3>Clear communication for both</h3>
+                <p>
+                  I help both sides establish clear expectations: rent, rules,
+                  cleaning, guests, noise, notice periods, and what's included —
+                  which reduces misunderstandings and conflict later.
+                </p>
+                <p>
+                  入居前に、家賃やハウスルール、退出条件などをあらかじめ定めた契約書を作成し、
+                  入居後のトラブルを防ぎます。
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== ROLE SECTIONS ========== -->
+      <section class="section" id="roles">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow">Choose your side</p>
+            <h2 class="section-title">How I support you</h2>
+          </div>
+
+          <!-- Tabs (still useful visually) -->
+          <div class="role-switch">
+            <button class="role-tab active" data-role-target="japanese">
+              For Japanese / 日本の方向け
+            </button>
+            <button class="role-tab" data-role-target="owners">
+              For House Owners
+            </button>
+          </div>
+
+          <!-- View: Japanese -->
+          <div class="role-view active" id="view-japanese">
+            <div class="cards">
+              <article class="card-row">
+                <div class="card-content">
+                  <h3>日本語で安心して相談できる</h3>
+                  <p>
+                    英語や文化の違いで不安がある方でも、条件や質問を日本語で整理し、
+                    トラブルを防ぎながら部屋探しができます。
+                  </p>
+                </div>
+              </article>
+
+              <article class="card-row">
+                <div class="card-content">
+                  <h3>困った時に代わりに伝えてくれる</h3>
+                  <p>
+                    問題や疑問があっても、言いづらい内容を英語で丁寧に説明し、
+                    オーナーさんとの誤解を最小限にします。
+                  </p>
+                </div>
+              </article>
+
+              <article class="card-row">
+                <div class="card-content">
+                  <h3>事前にしっかり内容確認</h3>
+                  <p>
+                    家賃、デポジット、ルール、退出条件、光熱費などを一つずつ確認し、
+                    安心して入居できます。
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- View: Owners -->
+          <div class="role-view" id="view-owners">
+            <div class="cards">
+              <article class="card-row">
+                <div class="card-content">
+                  <h3>Respectful, quiet tenants</h3>
+                  <p>
+                    Japanese tenants are known for being clean, quiet, and
+                    responsible — excellent for maintaining a harmonious shared
+                    home.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card-row">
+                <div class="card-content">
+                  <h3>Pre-screened applicants</h3>
+                  <p>
+                    I confirm identity, visa status, budget, reason for staying,
+                    and lifestyle before sending you any candidate.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card-row">
+                <div class="card-content">
+                  <h3>No language barrier</h3>
+                  <p>
+                    You don’t need to speak Japanese — I translate communication
+                    and help establish rules clearly before move-in.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CONTACT ========== -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow">Get in touch</p>
+            <h2 class="section-title">Start with a simple message</h2>
+            <p class="section-sub">
+              You can start by briefly telling me who you are, what you’re
+              looking for, and your timeline. I’ll reply with some questions and
+              next steps.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <p class="contact-label">Example</p>
+            <p>
+              <strong>For Japanese:</strong><br />
+              “I’m a Japanese student arriving in Vancouver on March 5. I’m
+              looking for a quiet, furnished room under $1,200/month near
+              SkyTrain. I’m not confident in English, so I’d like support
+              communicating with owners.”
+            </p>
+
+            <p>
+              <strong>For Owners:</strong><br />
+              “I’m a homeowner near Joyce–Collingwood with 1 available room. I’m
+              open to Japanese tenants but want clear rules and expectations.
+              I’d like help with screening and communication.”
+            </p>
+
+            <div class="contact-row">
+              <span class="pill">Send me an email:</span>
+              <!-- TODO: change this to your real email -->
+              <code>your-email@example.com</code>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="container">
+        © <span id="year"></span> Japan–Canada Room Bridge. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- ========== JS: role toggle + simple routing + year ========== -->
+    <script>
+      // Dynamic year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const tabs = document.querySelectorAll(".role-tab");
+      const views = {
+        japanese: document.getElementById("view-japanese"),
+        owners: document.getElementById("view-owners"),
+      };
+
+      function activateRole(role) {
+        tabs.forEach((tab) => {
+          tab.classList.toggle("active", tab.dataset.roleTarget === role);
+        });
+        Object.keys(views).forEach((key) => {
+          views[key].classList.toggle("active", key === role);
+        });
+      }
+
+      // Tab click (doesn't change URL)
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const role = tab.dataset.roleTarget;
+          activateRole(role);
+        });
+      });
+
+      const rolesSection = document.getElementById("roles");
+
+      function navigateToRole(role) {
+        const newPath = role === "owners" ? "/owners" : "/japanese";
+
+        if (window.location.pathname !== newPath) {
+          window.history.pushState({ role }, "", newPath);
+        }
+
+        activateRole(role);
+
+        // scroll to role section
+        rolesSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Header links & hero buttons that should change path
+      document
+        .querySelectorAll(".js-nav-role, [data-open-role]")
+        .forEach((el) => {
+          el.addEventListener("click", (event) => {
+            event.preventDefault();
+            const role = el.dataset.role || el.dataset.openRole;
+            if (!role) return;
+            navigateToRole(role);
+          });
+        });
+
+      // On first load: check current path and set correct role
+      function initRoleFromPath() {
+        const path = window.location.pathname || "/";
+        if (path.endsWith("/owners")) {
+          activateRole("owners");
+        } else {
+          // default and /japanese
+          activateRole("japanese");
+        }
+      }
+
+      // Handle back/forward buttons
+      window.addEventListener("popstate", (event) => {
+        const stateRole = event.state && event.state.role;
+        if (stateRole === "owners" || stateRole === "japanese") {
+          activateRole(stateRole);
+        } else {
+          initRoleFromPath();
+        }
+      });
+
+      initRoleFromPath();
+    </script>
+  </body>
+</html>
