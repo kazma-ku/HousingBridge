@@ -201,18 +201,18 @@
 }
 
 .hero-desc {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.4;
   opacity: 0.9;
-  max-width: 500px;
+  max-width: 650px;
   margin: 0 auto 18px auto;
 }
 
 .hero-actions {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  justify-content: center;
-  margin-top: 10px;
+  align-items: center;
 }
 
 .hero-btn {
@@ -227,6 +227,8 @@
 .hero-btn.primary {
   background: #ffaad5;      /* soft pink */
   color: #5a0030;
+  opacity: 0.9;
+  font-size: 15px;
 }
 
 .hero-btn.primary:hover {
@@ -240,6 +242,22 @@
 
 .hero-btn.ghost:hover {
   background: #f3f3f3;
+}
+.hero-actions-split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.hero-main-btn {
+  font-size: 18px;
+  padding: 12px 26px;
+}
+
+.hero-row {
+  display: flex;
+  gap: 12px;
 }
 
 /* Optional fun hands (like Phamily) */
@@ -614,37 +632,42 @@
   </head>
   <body>
     <!-- ========== HEADER ========== -->
+<!-- ========== HERO (FULL SCREEN) ========== -->
 <section class="hero-screen">
   <div class="hero">
-  
     <div class="hero-inner">
-    
-    <div class="hero-content">
-      <h2 class="hero-topline">Safe Housing Support in Vancouver</h2>
-      <h2 class="hero-topline">安心できる部屋探し</h2>
+      <div class="hero-content">
+        <h2 class="hero-topline">Safe Housing Support in Vancouver</h2>
+        <h2 class="hero-topline">安心できる部屋探し</h2>
 
-      <h1 class="hero-title">
-        Vancouver Housing Bridge<br>
-      </h1>
+        <h1 class="hero-title">
+          Vancouver Housing Bridge
+        </h1>
 
-      <p class="hero-desc">
-        Connecting Japanese newcomers and Vancouver house owners with
-        clear communication, translation, and pre-screening support.
-      </p>
+        <p class="hero-desc">
+          Connecting Japanese newcomers and Vancouver house owners with
+          clear communication, translation, and pre-screening support.
+        </p>
+        <p class="hero-desc">
+          日本人の住まい探しをサポート。オーナーとのコミュニケーション、明確な契約書作成、トラブル対応など
+          安心安全なカナダでの生活を全面サポート致します。
+        </p>
 
-      <div class="hero-actions">
-        <a href="/japanese" class="hero-btn primary">I’m Japanese</a>
-        <a href="/owners" class="hero-btn ghost">I’m an Owner</a>
-      </div>
-      </div>
-    </div>
-    </div>
-
-    <!-- optional illustrations -->
-    <img src="hand-left.png" class="hero-left" alt="">
-    <img src="hand-right.png" class="hero-right" alt="">
-
+<div class="hero-actions hero-actions-split">
+  <div class="hero-row">
+    <a href="japanese.html" class="hero-btn ghost">I’m Japanese</a>
+    <a href="owners.html" class="hero-btn ghost">I’m an Owner</a>
   </div>
+    <a href="rooms.html" class="hero-btn primary hero-main-btn">Find a Room</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- optional illustrations -->
+  <img src="hand-left.png" class="hero-left" alt="">
+  <img src="hand-right.png" class="hero-right" alt="">
 </section>
 
       <!-- ========== MISSION (APPEARS ON SCROLL) ========== -->

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Available Rooms | Vancouver Housing Bridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      :root {
+        --bg: #fdfcfb;
+        --text-main: #1f2933;
+        --text-muted: #6b7280;
+        --accent: #f97373;
+        --accent-soft: #ffe4e6;
+        --accent-blue: #60a5fa;
+        --radius-xl: 20px;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.09);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(
+          circle at top left,
+          #ffeff1 0,
+          #fdfcfb 40%,
+          #f4f7fb 100%
+        );
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 24px 16px 40px;
+      }
+
+      /* Header / breadcrumb */
+      .board-header {
+        border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+        background: rgba(253, 252, 251, 0.92);
+        backdrop-filter: blur(18px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .board-header-inner {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .back-link {
+        text-decoration: none;
+        color: #111827;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .back-link span {
+        font-size: 18px;
+      }
+
+      .brand-mini {
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #6b7280;
+      }
+
+      /* Intro */
+      .board-intro {
+        margin-top: 18px;
+        margin-bottom: 24px;
+      }
+
+      .board-title {
+        font-size: 26px;
+        margin-bottom: 4px;
+        letter-spacing: -0.02em;
+      }
+
+      .board-sub {
+        font-size: 14px;
+        color: var(--text-muted);
+        max-width: 620px;
+      }
+
+      .board-note {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Room list */
+      .room-list {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      @media (min-width: 800px) {
+        .room-list {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+      }
+
+      .room-card {
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        padding: 16px 16px 14px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+      }
+
+      .room-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 9px;
+        font-size: 11px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #9b1234;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .room-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .room-title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .room-location {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .room-price {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .room-meta {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .room-meta span + span::before {
+        content: "•";
+        margin: 0 6px;
+        color: #d1d5db;
+      }
+
+      .room-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .room-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+
+      .room-tag {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.04);
+        color: #4b5563;
+      }
+
+      .room-footer {
+        margin-top: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .room-contact {
+        font-weight: 500;
+      }
+
+      .room-contact a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      .room-contact a:hover {
+        text-decoration: underline;
+      }
+
+      .room-updated {
+        color: #9ca3af;
+        font-size: 11px;
+      }
+
+      footer {
+        padding: 20px 16px 26px;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+      }
+
+      /* === ROOM BOARD === */
+      .room-board {
+        background: #fdfcfb;
+        padding: 32px 0 48px;
+      }
+
+      .room-board-header {
+        text-align: left;
+        margin-bottom: 18px;
+      }
+
+      .room-board-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .room-board-sub {
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      /* list container */
+      .room-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* one room card (Suumo like) */
+      .room-card {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 14px 16px;
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 16px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      }
+
+      /* left side: main photo + thumbs */
+      .room-card-main-img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+
+      .room-thumbs {
+        display: flex;
+        gap: 6px;
+        margin-top: 6px;
+      }
+
+      .room-thumb {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      /* right side */
+      .room-header-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+
+      .room-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .room-tag {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: #ffe4e6;
+        color: #9f1239;
+        white-space: nowrap;
+      }
+
+      /* price / layout row */
+      .room-main-info {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 6px;
+      }
+
+      .room-price {
+        font-size: 18px;
+        font-weight: 700;
+        color: #b91c1c;
+      }
+
+      .room-layout {
+        font-size: 13px;
+        color: #374151;
+      }
+
+      /* detail meta list */
+      .room-meta {
+        font-size: 12px;
+        color: #6b7280;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .room-meta span::before {
+        content: "• ";
+      }
+
+      /* bottom buttons */
+      .room-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+      }
+
+      /* re-use hero-btn style but slightly smaller */
+      .room-btn {
+        padding: 7px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: 0.15s ease;
+      }
+
+      .room-btn.primary {
+        background: #0c5a41;
+        color: #fff;
+      }
+
+      .room-btn.primary:hover {
+        background: #064e3b;
+      }
+
+      .room-btn.outline {
+        background: #fff;
+        color: #374151;
+        border-color: #d1d5db;
+      }
+
+      .room-btn.outline:hover {
+        background: #f9fafb;
+      }
+
+      /* responsive: stack image + info on mobile */
+      @media (max-width: 720px) {
+        .room-card {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sticky top bar -->
+    <header class="board-header">
+      <div class="board-header-inner">
+        <a href="index.html" class="back-link">
+          <span>←</span> Back to top page
+        </a>
+        <div class="brand-mini">Vancouver Housing Bridge</div>
+      </div>
+    </header>
+
+    <section class="room-board">
+  <div class="container">
+    <header class="room-board-header">
+      <h1 class="room-board-title">入居可能なお部屋</h1>
+      <p class="room-board-sub">
+        公開している最新の空き部屋リストです。非公開の部屋もございますので、是非一度お問い合わせください。
+      </p>
+    </header>
+
+    <div class="room-list">
+
+      <!-- CARD 1 -->
+      <article class="room-card">
+        <!-- left: images -->
+        <div>
+          <img src="images/room-1.jpg" alt="Main room photo" class="room-card-main-img">
+          <div class="room-thumbs">
+            <div class="room-thumb">
+              <img src="room1-2.jpg" alt="" class="room-card-main-img">
+            </div>
+            <div class="room-thumb">
+              <img src="room1-3.jpg" alt="" class="room-card-main-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- right: info -->
+        <div>
+          <div class="room-header-row">
+            <a href="#" class="room-title">Furnished Room near Joyce–Collingwood</a>
+            <span class="room-tag">New</span>
+          </div>
+
+          <div class="room-main-info">
+            <div class="room-price">$1,150 / month</div>
+            <div class="room-layout">Private room ・ Shared 2BR ・ 12㎡</div>
+          </div>
+
+          <div class="room-meta">
+            <span>Joyce–Collingwood駅まで徒歩６分</span>
+            <span>1月5日から入居可能</span>
+            <span>女性のみ</span>
+            <span>備え付け食器の利用可能</span>
+            <span>Wi-Fi光熱費など込み</span>
+          </div>
+
+          <p style="font-size: 12px; color:#6b7280; margin-bottom: 8px;">
+            静かな環境で、家具付きの個室です。６ヶ月以上の契約希望。（相談可）
+          </p>
+
+          <div class="room-actions">
+            <a href="mailto:your-email@example.com?subject=Room%20Inquiry%20Joyce"
+               class="room-btn primary">Ask about this room</a>
+            <a href="#" class="room-btn outline">View details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2 (copy & change details) -->
+      <article class="room-card">
+        <div>
+          <img src="images/room-2.jpg" alt="Main room photo" class="room-card-main-img">
+        </div>
+        <div>
+          <div class="room-header-row">
+            <a href="#" class="room-title">Basement Suite near Metrotown</a>
+             <span class="room-tag">New</span>
+          </div>
+
+          <div class="room-main-info">
+            <div class="room-price">$1,300 / month</div>
+            <div class="room-layout">1BR Suite ・ 28㎡</div>
+          </div>
+
+          <div class="room-meta">
+            <span>メトロタウンまでバスで10分</span>
+            <span>即入居可能</span>
+            <span>2人まで同居可能</span>
+          </div>
+
+          <p style="font-size: 12px; color:#6b7280; margin-bottom: 8px;">
+           カナダ人オーナー。独立玄関と小さなキッチンが利用可能。家具付き。
+          </p>
+
+          <div class="room-actions">
+            <a href="mailto:your-email@example.com?subject=Room%20Inquiry%20Metrotown"
+               class="room-btn primary">Ask about this room</a>
+            <a href="#" class="room-btn outline">View details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Add more <article class="room-card"> ... </article> as needed -->
+
+    </div>
+  </div>
+</section>
+
+
+        <!-- Add more room-card blocks here -->
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Vancouver Housing Bridge. All rights reserved.
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
