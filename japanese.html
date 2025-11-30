@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>For Japanese Room Seekers | Vancouver Housing Bridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      :root {
+        --bg: #fdfcfb;
+        --text-main: #111827;
+        --text-muted: #6b7280;
+        --accent: #f97373;
+        --accent-blue: #60a5fa;
+        --accent-lime: #a3e635;
+        --radius-xl: 20px;
+        --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
+        --container-width: 900px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(
+          circle at top left,
+          #ffeff4 0,
+          #fdfcfb 40%,
+          #f4f7fb 100%
+        );
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      /* Header */
+      header {
+        padding: 14px 0;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        font-size: 15px;
+      }
+
+      .header-back {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .header-back a {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+      }
+
+      .header-back a:hover {
+        background: #f9fafb;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 16px 0 32px;
+      }
+
+      .hero-box {
+        background: #0c5a41;
+        color: #fff;
+        border-radius: 24px;
+        padding: 32px 22px 28px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .hero-eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        opacity: 0.85;
+        margin-bottom: 6px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 8px;
+      }
+
+      .hero-screen {
+        height: 100vh; /* full screen */
+        width: 100%;
+        background: #0c5a41; /* green background */
+        display: flex;
+        align-items: center; /* vertical centering */
+        justify-content: center; /* horizontal centering */
+        margin-bottom: 9rem;
+        padding: 3rem 1.5rem 1.5rem;
+        overflow: hidden;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .hero-text {
+        font-size: 14px;
+        opacity: 0.94;
+      }
+
+      /* Sections */
+      .section {
+        padding: 24px 0;
+      }
+
+      .section-header {
+        margin-bottom: 16px;
+        text-align: left;
+      }
+
+      .section-eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #9ca3af;
+        margin-bottom: 4px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .section-title span {
+        color: var(--accent-blue);
+      }
+
+      .section-sub {
+        margin-top: 6px;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      /* Cards */
+      .cards {
+        display: grid;
+        gap: 14px;
+        margin-top: 10px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: var(--radius-xl);
+        padding: 14px 14px 12px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+      }
+
+      .card-icon.red {
+        background: radial-gradient(circle at top left, #fecaca, #f97373);
+      }
+      .card-icon.blue {
+        background: radial-gradient(circle at top left, #bfdbfe, #60a5fa);
+      }
+      .card-icon.lime {
+        background: radial-gradient(circle at top left, #d9f99d, #a3e635);
+      }
+      .card-icon.purple {
+        background: radial-gradient(circle at top left, #ddd6fe, #a855f7);
+      }
+
+      .card-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 3px;
+      }
+
+      .card-title-ja {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #374151;
+      }
+
+      .card-body {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      /* CTA */
+      .cta {
+        margin: 24px 0 40px;
+      }
+
+      .cta-box {
+        background: #111827;
+        color: #f9fafb;
+        border-radius: 22px;
+        padding: 18px 18px 16px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .cta-title {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .cta-body {
+        font-size: 13px;
+        opacity: 0.9;
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: #f97373;
+        color: #111827;
+        border-color: #fb7185;
+      }
+
+      .btn-primary:hover {
+        background: #fb7185;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: #e5e7eb;
+        border-color: rgba(249, 250, 251, 0.5);
+      }
+
+      .btn-outline:hover {
+        background: rgba(249, 250, 251, 0.05);
+      }
+
+      footer {
+        margin-top: auto;
+        padding: 12px 0 20px;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+      }
+
+      @media (min-width: 720px) {
+        .hero-box {
+          padding: 40px 32px 30px;
+        }
+        .hero-title {
+          font-size: 30px;
+        }
+        .hero-subtitle {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="container header-inner">
+          <div class="brand">Vancouver Housing Bridge</div>
+          <div class="header-back">
+            <a href="../">← Back to top page</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-screen">
+          <div class="container">
+            <div class="hero-box">
+              <p class="hero-eyebrow">For Japanese room seekers</p>
+              <h1 class="hero-title">
+                住居探しからトラブル・オーナー対応、契約書作成、悩み事の相談まで、全て日本語でサポートします。
+              </h1>
+              <p class="hero-subtitle"></p>
+              <p class="hero-text">
+                初めてのカナダ生活。仕事や学校で忙しい時に、住居面での心配事やトラブルは大きなストレスになります。<br />
+                実際、外国人オーナーとの間で言語や文化の違いによるトラブルやモヤモヤが現地日本人からは多く聞かれます。<br />
+                せっかくのカナダ生活、本来必要のない住居の悩みでストレスを抱えてしまうのは非常にもったいないです。<br />
+                そんな不安を少しでも減らし、皆さんのカナダ生活が少しでも有意義なものとなるように、精一杯サポートします。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Worries / fears -->
+        <section class="section">
+          <div class="container">
+            <div class="section-header">
+              <p class="section-eyebrow">Common worries</p>
+              <h2 class="section-title">
+                日本人の方からよく聞く不安やトラブル
+              </h2>
+              <!-- <p class="section-sub">
+                実際に日本人の留学生・ワーホリの方から聞いた「怖かった経験」や「心配していること」をカードにまとめました。
+              </p> -->
+            </div>
+
+            <div class="cards">
+              <!-- Card 1 -->
+              <article class="card">
+                <div class="card-icon red">😨</div>
+                <div>
+                  <h3 class="card-title">オーナー間とのトラブルが怖い</h3>
+                  <p class="card-body">
+                    ・英語でうまく説明できず、誤解されてしまう<br />
+                    ・少し文句を言ったら「じゃあ出て行って」と言われそうで何も言えない<br />
+                    ・自分の立場が弱く感じてしまい、モヤモヤを我慢してしまう
+                  </p>
+                </div>
+              </article>
+
+              <!-- Card 2 -->
+              <article class="card">
+                <div class="card-icon purple">⚠️</div>
+                <div>
+                  <h3 class="card-title">Unfair or harassing owners</h3>
+                  <h4 class="card-title-ja">立場の弱さにつけ込まれる</h4>
+                  <p class="card-body">
+                    ・急な家賃変更やハウスルールの変更により不利益を被る<br />
+                    ・「日本人は文句を言わない」と思われ、ハラスメント行為を受ける<br />
+                    ・事前に知らされていないルールを強要される
+                  </p>
+                </div>
+              </article>
+
+              <!-- Card 3 -->
+              <article class="card">
+                <div class="card-icon blue">📜</div>
+                <div>
+                  <h3 class="card-title">Changing rules without notice</h3>
+                  <h4 class="card-title-ja">ルールを急に変えられないか不安</h4>
+                  <p class="card-body">
+                    ・入居後に「やっぱりゲスト禁止」「掃除の回数を増やして」などと言われる<br />
+                    ・退去日のルールがあいまいで、いつまで住めるのか分からない<br />
+                    ・口約束だけで進んでしまい、証拠が残らない
+                  </p>
+                </div>
+              </article>
+
+              <!-- Card 4 -->
+              <article class="card">
+                <div class="card-icon lime">🗣️</div>
+                <div>
+                  <h3 class="card-title">Language & culture gap</h3>
+                  <h4 class="card-title-ja">英語と文化のギャップ</h4>
+                  <p class="card-body">
+                    ・細かいニュアンスが伝わらず、本当の気持ちをうまく説明できない<br />
+                    ・「これ、カナダでは普通なのかな？
+                    それともおかしい？」と判断が難しい<br />
+                    ・相談できる人がいなくて、ひとりで抱え込んでしまう
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- How I help -->
+        <section class="section">
+          <div class="container">
+            <div class="section-header">
+              <p class="section-eyebrow">How I support you</p>
+              <h2 class="section-title"><span>仲介</span>としてできること</h2>
+              <p class="section-sub">
+                私はカナダ在住者として、オーナー側の考えも、日本人側の気持ちも両方理解したうえで、
+                できるだけフェアで安心できる形になるよう一緒に考えます。
+              </p>
+            </div>
+
+            <div class="cards">
+              <article class="card">
+                <div class="card-icon blue">📝</div>
+                <div>
+                  <h3 class="card-title">Japanese-first communication</h3>
+                  <h4 class="card-title-ja">まず日本語で整理してから英語に</h4>
+                  <p class="card-body">
+                    条件や不安、伝えたいことを日本語で整理し、こちらで自然な英語メッセージにします。
+                    「この表現で大丈夫かな？」と心配しなくてOKです。
+                  </p>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="card-icon lime">🤝</div>
+                <div>
+                  <h3 class="card-title">Clear rules from the start</h3>
+                  <h4 class="card-title-ja">入居前にルールをはっきりさせる</h4>
+                  <p class="card-body">
+                    カナダではオーナーが優位に立ってルールが決められる事が多いため、
+                    急なルール変更や理不尽なルールを求められる事も少なくありません。<br />
+                    また、決まった雛形などがなく、口約束だけで進んでしまうことも多いです。<br />
+                    これらによるトラブルを無くす為、入居前に双方の意見を聞いた上で、ハウスルールや契約書の作成を書面で行います。
+                  </p>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="card-icon red">🧩</div>
+                <div>
+                  <h3 class="card-title">When something feels wrong</h3>
+                  <h4 class="card-title-ja">「あれ？」と思ったら相談できる</h4>
+                  <p class="card-body">
+                    オーナーからのメッセージが不安な内容だったり、モヤっとしたときは、
+                    まず日本語でスクリーンショットを送ってください。一緒に内容を読んで対応を考えます。
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+          <div class="container">
+            <div class="cta-box">
+              <div>
+                <p class="cta-title">
+                  まずは「今の状況」を簡単に送ってください。
+                </p>
+                <p class="cta-body">
+                  例：<br />
+                  「3月にバンクーバー到着予定で、予算は$1,200くらい。英語が不安なので、日本語で相談しながら部屋を探したいです。」<br />
+                  というように、ざっくりで大丈夫です。
+                </p>
+              </div>
+              <div class="cta-actions">
+                <a href="mailto:your-email@example.com" class="btn btn-primary">
+                  日本語でメールする
+                </a>
+                <a href="../" class="btn btn-outline"> トップページに戻る </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>© <span id="year"></span> Vancouver Housing Bridge</footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
