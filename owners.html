@@ -449,6 +449,72 @@
         right: -30px;
       }
 
+      .fancy-cards-section {
+        padding: 64px 0 80px;
+      }
+
+      .fancy-cards-container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+      }
+
+      /* base card */
+      .fancy-card {
+        background: #ffffff;
+        border-radius: 32px;
+        box-shadow: 0 32px 80px rgba(15, 23, 42, 0.12);
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) auto;
+        gap: 32px;
+        padding: 32px 40px;
+        align-items: center;
+        position: relative;
+      }
+
+      /* top / bottom positioning + tilt */
+      .fancy-card--top {
+        transform: rotate(-2.2deg) translateX(-18px);
+        margin-bottom: 32px;
+      }
+
+      .fancy-card--bottom {
+        transform: rotate(2.2deg) translateX(40px);
+      }
+
+      /* content */
+      .fancy-card-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #065f46; /* deep green */
+        margin-bottom: 12px;
+      }
+
+      .fancy-card-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #065f46;
+      }
+
+      .fancy-card-illu span {
+        display: inline-flex;
+        font-size: 48px;
+      }
+
+      /* responsive */
+      @media (max-width: 768px) {
+        .fancy-card {
+          grid-template-columns: 1fr;
+          padding: 24px 22px;
+          transform: none !important;
+          margin: 0 0 20px 0;
+        }
+        .fancy-card-illu {
+          justify-self: flex-start;
+        }
+      }
+
       /* Mobile */
       @media (max-width: 768px) {
         .hero-text-wrap {
@@ -533,8 +599,8 @@
         </section>
 
         <!-- Worries / fears -->
-        <section class="section">
-          <div class="container">
+        <section class="fancy-cards-section">
+          <div class="fancy-cards-container">
             <div class="section-header">
               <p class="section-eyebrow"></p>
               <h2 class="section-title">Why Choosing Us</h2>
@@ -545,10 +611,10 @@
 
             <div class="cards">
               <!-- Card 1 -->
-              <article class="card">
+              <article class="fancy-card fancy-card--top">
                 <div>
-                  <h3 class="card-title">Reliable Japanese tenants</h3>
-                  <p class="card-body">
+                  <h3 class="fancy-card-title">Reliable Japanese tenants</h3>
+                  <p class="fancy-card-text">
                     Japanese tenants are known for being well-mannered, tidy,
                     and respectful of shared spaces. They pay on time, follow
                     rules, and keep communication smooth.
@@ -557,10 +623,10 @@
               </article>
 
               <!-- Card 2 -->
-              <article class="card">
-                <div>
-                  <h3 class="card-title">pre-screen tenants for you</h3>
-                  <p class="card-body">
+              <article class="fancy-card fancy-card--bottom">
+                <div class="fancy-card-body">
+                  <h3 class="fancy-card-title">Pre-screen tenants for you</h3>
+                  <p class="fancy-card-text">
                     We confirm basic background, communication level, and
                     expectations before introducing them to you, saving you time
                     and reducing risk.
@@ -569,10 +635,12 @@
               </article>
 
               <!-- Card 3 -->
-              <article class="card">
+              <article class="fancy-card fancy-card--top">
                 <div>
-                  <h3 class="card-title">Message Support & Translation</h3>
-                  <p class="card-body">
+                  <h3 class="fancy-card-title">
+                    Message Support & Translation
+                  </h3>
+                  <p class="fancy-card-text">
                     I can help explain room details to applicants, answer common
                     questions, and coordinate viewing schedules so you don’t
                     have to manage everything alone.
@@ -581,12 +649,12 @@
               </article>
 
               <!-- Card 4 -->
-              <article class="card">
+              <article class="fancy-card fancy-card--bottom">
                 <div>
-                  <h3 class="card-title">
+                  <h3 class="fancy-card-title">
                     Showing rooms & simple coordination
                   </h3>
-                  <p class="card-body">
+                  <p class="fancy-card-text">
                     I can help explain room details to applicants, answer common
                     questions, and coordinate viewing schedules so you don’t
                     have to manage everything alone.
@@ -594,12 +662,12 @@
                 </div>
               </article>
 
-              <article class="card">
+              <article class="fancy-card fancy-card--top">
                 <div>
-                  <h3 class="card-title">
+                  <h3 class="fancy-card-title">
                     Smooth move-in & safer long-term stay
                   </h3>
-                  <p class="card-body">
+                  <p class="fancy-card-text">
                     I translate your house rules and expectations so both sides
                     understand clearly from day one. This prevents conflicts and
                     supports long-term, stable tenancies.
@@ -674,9 +742,9 @@
               </div>
               <div class="cta-actions">
                 <a href="mailto:your-email@example.com" class="btn btn-primary">
-                  日本語でメールする
+                  Send Mail
                 </a>
-                <a href="../" class="btn btn-outline"> トップページに戻る </a>
+                <a href="../" class="btn btn-outline"> Back to Top </a>
               </div>
             </div>
           </div>
