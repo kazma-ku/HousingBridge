@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Japan–Canada Room Mediator</title>
+    <title>Vancouver Housing Bridge | Safe Housing for Japanese Newcomers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Connecting Japanese newcomers with Vancouver homeowners. We provide translation, pre-screening, and communication support for safe, stress-free housing." />
 
     <style>
       /* ---------- Base styles ---------- */
@@ -50,6 +51,13 @@
       a {
         text-decoration: none;
         color: inherit;
+      }
+
+      /* Accessibility: focus states */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
       }
 
       .container {
@@ -632,327 +640,64 @@
   </head>
   <body>
     <!-- ========== HEADER ========== -->
-<!-- ========== HERO (FULL SCREEN) ========== -->
-<section class="hero-screen">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <h2 class="hero-topline">Safe Housing Support in Vancouver</h2>
-        <h2 class="hero-topline">安心できる部屋探し</h2>
-
-        <h1 class="hero-title">
-          Vancouver Housing Bridge
-        </h1>
-
-        <p class="hero-desc">
-          Connecting Japanese newcomers and Vancouver house owners with
-          clear communication, translation, and pre-screening support.
-        </p>
-        <p class="hero-desc">
-          日本人の住まい探しをサポート。オーナーとのコミュニケーション、明確な契約書作成、トラブル対応など
-          安心安全なカナダでの生活を全面サポート致します。
-        </p>
-
-<div class="hero-actions hero-actions-split">
-  <div class="hero-row">
-    <a href="japanese.html" class="hero-btn ghost">I’m Japanese</a>
-    <a href="owners.html" class="hero-btn ghost">I’m an Owner</a>
-  </div>
-    <a href="rooms.html" class="hero-btn primary hero-main-btn">Find a Room</a>
-</div>
-
+    <header>
+      <div class="container header-inner">
+        <a href="/" class="brand">
+          <div class="brand-logo">V</div>
+          <div class="brand-text">
+            <span class="brand-name">Vancouver Housing Bridge</span>
+            <span class="brand-sub">Safe housing for Japanese newcomers</span>
+          </div>
+        </a>
+        <nav class="header-nav">
+          <a href="japanese.html" class="nav-link">日本の方</a>
+          <a href="owners.html" class="nav-link">For Owners</a>
+          <a href="rooms.html" class="nav-link nav-link--primary">Find a Room</a>
+        </nav>
       </div>
-    </div>
-  </div>
+    </header>
 
-  <!-- optional illustrations -->
-  <img src="hand-left.png" class="hero-left" alt="">
-  <img src="hand-right.png" class="hero-right" alt="">
-</section>
+    <main>
+      <!-- ========== HERO (FULL SCREEN) ========== -->
+      <section class="hero-screen">
+        <div class="hero">
+          <div class="hero-inner">
+            <p class="hero-topline">Safe Housing Support in Vancouver</p>
+            <p class="hero-topline">安心できる部屋探し</p>
 
-      <!-- ========== MISSION (APPEARS ON SCROLL) ========== -->
-      <section class="section" id="mission">
-        <!-- <div class="container">
-          <div class="section-header">
-            <p class="section-eyebrow">Our Mission</p>
-            <h2 class="section-title">
-              Peace of mind for<br /><strong>both sides</strong>
-            </h2>
-            <p class="section-sub">
-              I support Japanese room seekers and local house owners so that
-              both can enjoy a safe, respectful, and low-stress living
-              arrangement.
+            <h1 class="hero-title">Vancouver Housing Bridge</h1>
+
+            <p class="hero-desc">
+              Connecting Japanese newcomers and Vancouver house owners with
+              clear communication, translation, and pre-screening support.
             </p>
-          </div> -->
+            <p class="hero-desc">
+              日本人の住まい探しをサポート。オーナーとのコミュニケーション、明確な契約書作成、トラブル対応など
+              安心安全なカナダでの生活を全面サポート致します。
+            </p>
 
-          <div class="cards">
-            <!-- Card 1 -->
-            <!-- <article class="card-row">
-              <div class="card-visual card-visual--pink">😊</div>
-              <div class="card-content">
-                <h3>Support for Japanese newcomers</h3>
-                <h3>日本人向けサポート</h3>
-                <p>
-                  For those not confident in English, I help with communication,
-                  message writing, contract understanding, and problem-solving
-                  without fear or confusion.
-                </p>
-                <p>
-                  オーナーへの交渉や契約内容の確認、トラブル対応など、全て日本語で対応します。
-                  誤解や不安なく、安心して部屋探しができます。
-                </p>
+            <div class="hero-actions hero-actions-split">
+              <div class="hero-row">
+                <a href="japanese.html" class="hero-btn ghost">I'm Japanese</a>
+                <a href="owners.html" class="hero-btn ghost">I'm an Owner</a>
               </div>
-            </article> -->
-
-            <!-- Card 2 -->
-            <!-- <article class="card-row card-row--reverse">
-              <div class="card-visual card-visual--blue">🏡</div>
-              <div class="card-content">
-                <h3>Reliable tenants for owners</h3>
-                <p>
-                  Japanese tenants are known for being polite, quiet, and clean.
-                  I screen applicants and confirm their identity, purpose,
-                  budget, and lifestyle before connecting them to owners.
-                </p>
-              
-              </div>
-            </article> -->
-
-            <!-- Card 3 -->
-            <!-- <article class="card-row">
-              <div class="card-visual card-visual--lime">🤝</div>
-              <div class="card-content">
-                <h3>Clear communication for both</h3>
-                <p>
-                  I help both sides establish clear expectations: rent, rules,
-                  cleaning, guests, noise, notice periods, and what's included —
-                  which reduces misunderstandings and conflict later.
-                </p>
-                <p>
-                  入居前に、家賃やハウスルール、退出条件などをあらかじめ定めた契約書を作成し、
-                  入居後のトラブルを防ぎます。
-                </p>
-              </div>
-            </article> -->
+              <a href="rooms.html" class="hero-btn primary hero-main-btn">Find a Room</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ========== ROLE SECTIONS ==========
-      <section class="section" id="roles">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-eyebrow">Choose your side</p>
-            <h2 class="section-title">How I support you</h2>
-          </div>
-
-          <!-- Tabs (still useful visually) 
-          <div class="role-switch">
-            <button class="role-tab active" data-role-target="japanese">
-              For Japanese / 日本の方向け
-            </button>
-            <button class="role-tab" data-role-target="owners">
-              For House Owners
-            </button>
-          </div>
-
-          <!-- View: Japanese 
-          <div class="role-view active" id="view-japanese">
-            <div class="cards">
-              <article class="card-row">
-                <div class="card-content">
-                  <h3>日本語で安心して相談できる</h3>
-                  <p>
-                    英語や文化の違いで不安がある方でも、条件や質問を日本語で整理し、
-                    トラブルを防ぎながら部屋探しができます。
-                  </p>
-                </div>
-              </article>
-
-              <article class="card-row">
-                <div class="card-content">
-                  <h3>困った時に代わりに伝えてくれる</h3>
-                  <p>
-                    問題や疑問があっても、言いづらい内容を英語で丁寧に説明し、
-                    オーナーさんとの誤解を最小限にします。
-                  </p>
-                </div>
-              </article>
-
-              <article class="card-row">
-                <div class="card-content">
-                  <h3>事前にしっかり内容確認</h3>
-                  <p>
-                    家賃、デポジット、ルール、退出条件、光熱費などを一つずつ確認し、
-                    安心して入居できます。
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <!-- View: Owners 
-          <div class="role-view" id="view-owners">
-            <div class="cards">
-              <article class="card-row">
-                <div class="card-content">
-                  <h3>Respectful, quiet tenants</h3>
-                  <p>
-                    Japanese tenants are known for being clean, quiet, and
-                    responsible — excellent for maintaining a harmonious shared
-                    home.
-                  </p>
-                </div>
-              </article>
-
-              <article class="card-row">
-                <div class="card-content">
-                  <h3>Pre-screened applicants</h3>
-                  <p>
-                    I confirm identity, visa status, budget, reason for staying,
-                    and lifestyle before sending you any candidate.
-                  </p>
-                </div>
-              </article>
-
-              <article class="card-row">
-                <div class="card-content">
-                  <h3>No language barrier</h3>
-                  <p>
-                    You don’t need to speak Japanese — I translate communication
-                    and help establish rules clearly before move-in.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- ========== CONTACT ========== -->
-      <!-- <section class="section" id="contact">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-eyebrow">Get in touch</p>
-            <h2 class="section-title">Start with a simple message</h2>
-            <p class="section-sub">
-              You can start by briefly telling me who you are, what you’re
-              looking for, and your timeline. I’ll reply with some questions and
-              next steps.
-            </p>
-          </div> -->
-
-          <!-- <div class="contact-card">
-            <p class="contact-label">Example</p>
-            <p>
-              <strong>For Japanese:</strong><br />
-              “I’m a Japanese student arriving in Vancouver on March 5. I’m
-              looking for a quiet, furnished room under $1,200/month near
-              SkyTrain. I’m not confident in English, so I’d like support
-              communicating with owners.”
-            </p> -->
-
-            <!-- <p>
-              <strong>For Owners:</strong><br />
-              “I’m a homeowner near Joyce–Collingwood with 1 available room. I’m
-              open to Japanese tenants but want clear rules and expectations.
-              I’d like help with screening and communication.”
-            </p> -->
-
-            <!-- <div class="contact-row">
-              <span class="pill">Send me an email:</span> -->
-              <!-- TODO: change this to your real email -->
-              <!-- <code>your-email@example.com</code>
-            </div>
-          </div>
-        </div> -->
-      </section>
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer>
       <div class="container">
-        © <span id="year"></span> Japan–Canada Room Bridge. All rights reserved.
+        © <span id="year"></span> Vancouver Housing Bridge. All rights reserved.
       </div>
     </footer>
 
-    <!-- ========== JS: role toggle + simple routing + year ========== -->
     <script>
-      // Dynamic year
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      const tabs = document.querySelectorAll(".role-tab");
-      const views = {
-        japanese: document.getElementById("view-japanese"),
-        owners: document.getElementById("view-owners"),
-      };
-
-      function activateRole(role) {
-        tabs.forEach((tab) => {
-          tab.classList.toggle("active", tab.dataset.roleTarget === role);
-        });
-        Object.keys(views).forEach((key) => {
-          views[key].classList.toggle("active", key === role);
-        });
-      }
-
-      // Tab click (doesn't change URL)
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          const role = tab.dataset.roleTarget;
-          activateRole(role);
-        });
-      });
-
-      const rolesSection = document.getElementById("roles");
-
-      function navigateToRole(role) {
-        const newPath = role === "owners" ? "/owners" : "/japanese";
-
-        if (window.location.pathname !== newPath) {
-          window.history.pushState({ role }, "", newPath);
-        }
-
-        activateRole(role);
-
-        // scroll to role section
-        rolesSection.scrollIntoView({ behavior: "smooth" });
-      }
-
-      // Header links & hero buttons that should change path
-      document
-        .querySelectorAll(".js-nav-role, [data-open-role]")
-        .forEach((el) => {
-          el.addEventListener("click", (event) => {
-            event.preventDefault();
-            const role = el.dataset.role || el.dataset.openRole;
-            if (!role) return;
-            navigateToRole(role);
-          });
-        });
-
-      // On first load: check current path and set correct role
-      function initRoleFromPath() {
-        const path = window.location.pathname || "/";
-        if (path.endsWith("/owners")) {
-          activateRole("owners");
-        } else {
-          // default and /japanese
-          activateRole("japanese");
-        }
-      }
-
-      // Handle back/forward buttons
-      window.addEventListener("popstate", (event) => {
-        const stateRole = event.state && event.state.role;
-        if (stateRole === "owners" || stateRole === "japanese") {
-          activateRole(stateRole);
-        } else {
-          initRoleFromPath();
-        }
-      });
-
-      initRoleFromPath();
     </script>
   </body>
 </html>
